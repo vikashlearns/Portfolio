@@ -2,333 +2,866 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vikash Rawat | DevSecOps & CyberArk Engineer</title>
-  <meta name="description" content="Vikash Rawat - DevSecOps & CyberArk Engineer | Cloud Security | CI/CD Automation" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset & base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vikash Rawat | DevSecOps & CyberArk Architect</title>
+    <meta name="description"
+        content="Vikash Rawat - DevSecOps & CyberArk Architect | Cloud Security | CI/CD Automation | Infrastructure Automation." />
+    <meta name="author" content="Vikash Rawat" />
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
-      color: #f0f0f5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet" />
 
-    header {
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-      margin-top: 2rem;
-      margin-bottom: 3rem;
-      user-select: none;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #f0f0f5;
-      text-shadow: 0 0 10px #fff;
-    }
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --bg-start: #000dff; /* Deep Blue */
+            --bg-end: #6b73ff;   /* Lighter Blue */
+            --main-bg: rgba(255, 255, 255, 0.08); /* Glassy card background */
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-color: #f0f0f5;
+            --heading-color: #f0f0f5;
+            --accent-color: #8a9cff; /* Light Blue Accent */
+            --secondary-accent: #5e85ff; /* Slightly darker accent */
+            --card-bg: #141a42; /* Dark blue for project cards */
+            --project-hover-shadow: rgba(64, 74, 190, 0.85);
+            --tech-tag-bg: #2d367f;
+            --tech-tag-text: #a0aaff;
+            --tech-tag-hover-bg: #5666ff;
+            --input-bg: #222a75;
+            --input-text: #dde1ff;
+            --footer-text: #abb2ffcc;
+            --toggle-bg: rgba(255, 255, 255, 0.15);
+            --toggle-shadow: rgba(0, 13, 255, 0.5);
+            --toggle-hover-bg: #fff;
+            --toggle-hover-color: #000dff;
+        }
 
-    header p {
-      font-weight: 600;
-      margin-top: 0.5rem;
-      color: #b0b3c6;
-      font-size: 1.25rem;
-      text-shadow: 0 0 8px #9ba9ff;
-    }
+        /* Light Mode Variables */
+        body.light-mode {
+            --bg-start: #e0e7ff; /* Light Blue */
+            --bg-end: #f5f5ff;   /* Off-white */
+            --main-bg: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --text-color: #333;
+            --heading-color: #1a237e; /* Darker blue heading */
+            --accent-color: #6200ea; /* Purple accent */
+            --secondary-accent: #3700b3; /* Darker purple */
+            --card-bg: #f9f9f9;
+            --project-hover-shadow: rgba(98, 0, 234, 0.2);
+            --tech-tag-bg: #e6e6fa;
+            --tech-tag-text: #6200ea;
+            --tech-tag-hover-bg: #3700b3;
+            --input-bg: #f0f0f0;
+            --input-text: #333;
+            --footer-text: #555;
+            --toggle-bg: rgba(0, 0, 0, 0.15);
+            --toggle-shadow: rgba(0, 0, 0, 0.1);
+            --toggle-hover-bg: #000;
+            --toggle-hover-color: #fff;
+        }
 
-    nav {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-    }
+        /* Base & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    nav a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      background: rgba(255 255 255 / 0.15);
-      color: #f0f0f5;
-      box-shadow: 0 0 10px rgba(0, 13, 255, 0.5);
-      transition: background 0.3s ease, transform 0.2s ease;
-      user-select: none;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    nav a:hover {
-      background: #fff;
-      color: #000dff;
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #8a9cff;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            transition: background 0.8s ease-in-out, color 0.8s ease-in-out;
+            position: relative;
+        }
 
-    main {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 20px;
-      box-shadow: 0 8px 40px rgba(0, 13, 255, 0.4);
-      padding: 2.5rem 3rem;
-      backdrop-filter: blur(10px);
-      margin-bottom: 3rem;
-    }
+        /* Animated Background Particles */
+        .background-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
 
-    section {
-      margin-bottom: 3rem;
-    }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
 
-    section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      border-left: 6px solid #7f8aff;
-      padding-left: 1rem;
-      text-shadow: 0 0 5px #7f8aff;
-    }
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-20px) translateX(20px) scale(1.1); opacity: 0.5; }
+            100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+        }
 
-    /* About */
-    #about p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #d0d0e8;
-    }
 
-    /* Projects */
-    .project {
-      background: #141a42;
-      padding: 1.5rem 2rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(32, 40, 95, 0.7);
-      margin-bottom: 1.8rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--toggle-bg);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px var(--toggle-shadow);
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
 
-    .project:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(64, 74, 190, 0.85);
-    }
+        .theme-toggle:hover {
+            background: var(--toggle-hover-bg);
+            color: var(--toggle-hover-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--accent-color);
+        }
 
-    .project h3 {
-      font-weight: 700;
-      color: #aab6ff;
-      margin-bottom: 0.5rem;
-    }
+        /* Header */
+        header {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 3.5rem;
+            user-select: none;
+        }
 
-    .project p {
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #c3c9ffcc;
-      margin-bottom: 0.75rem;
-    }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    .project a {
-      color: #98c1ff;
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s ease;
-    }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
+            color: var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 25px var(--accent-color);
+            animation: pulse 2s infinite ease-in-out;
+            transition: all 0.5s ease;
+        }
 
-    .project a:hover {
-      border-color: #5e85ff;
-    }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 25px var(--accent-color); }
+            50% { box-shadow: 0 0 40px var(--secondary-accent); }
+            100% { box-shadow: 0 0 25px var(--accent-color); }
+        }
 
-    /* Tech Stack */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: var(--heading-color);
+            text-shadow: 0 0 15px var(--accent-color);
+            margin-top: 1rem;
+            transition: all 0.5s ease;
+        }
 
-    .tech-stack span {
-      background: #2d367f;
-      color: #a0aaff;
-      padding: 0.6rem 1.2rem;
-      font-weight: 600;
-      border-radius: 9999px;
-      box-shadow: 0 0 8px #3947a6;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
+        header .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            text-shadow: 0 0 8px var(--accent-color);
+            transition: all 0.5s ease;
+        }
 
-    .tech-stack span:hover {
-      background: #5666ff;
-      color: white;
-      box-shadow: 0 0 15px #7688ff;
-    }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 15px var(--accent-color);
+            margin-top: 1.5rem;
+            text-decoration: none;
+        }
 
-    /* Contact Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px var(--secondary-accent);
+        }
 
-    input,
-    textarea {
-      padding: 0.85rem 1rem;
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 500;
-      background: #222a75;
-      color: #dde1ff;
-      box-shadow: inset 0 0 8px #1b2370;
-      resize: none;
-      transition: box-shadow 0.3s ease;
-    }
+        nav {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
 
-    input:focus,
-    textarea:focus {
-      outline: none;
-      box-shadow: 0 0 12px #a1b0ff;
-    }
+        nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(0, 13, 255, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+            user-select: none;
+            backdrop-filter: blur(5px);
+        }
 
-    button {
-      background: #7f8aff;
-      color: #f0f0f5;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.9rem 1.5rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px #7f8aff;
-    }
+        nav a:hover {
+            background: var(--toggle-hover-bg);
+            color: var(--toggle-hover-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
 
-    button:hover {
-      background: #5666ff;
-      box-shadow: 0 0 20px #7688ff;
-    }
+        /* Main Content Area */
+        main {
+            width: 100%;
+            max-width: 900px;
+            background: var(--main-bg);
+            border-radius: 25px;
+            box-shadow: 0 12px 60px var(--bg-start);
+            padding: 3rem 3.5rem;
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            transition: all 0.8s ease-in-out;
+        }
 
-    /* Footer */
-    footer {
-      color: #abb2ffcc;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      user-select: none;
-      text-align: center;
-    }
+        section {
+            margin-bottom: 4rem;
+            opacity: 0; /* For scroll-based animation */
+            transform: translateY(20px); /* For scroll-based animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      main {
-        padding: 2rem 1.5rem;
-      }
+        section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-      header h1 {
-        font-size: 2.2rem;
-      }
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid var(--accent-color);
+            padding-left: 1.2rem;
+            color: var(--heading-color);
+            text-shadow: 0 0 8px var(--accent-color);
+            transition: all 0.5s ease;
+        }
 
-      nav {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-    }
-  </style>
+        /* About Section */
+        #about p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            transition: all 0.5s ease;
+        }
+
+        /* Projects Section */
+        .project {
+            background: var(--card-bg);
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(32, 40, 95, 0.5);
+            margin-bottom: 2rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.5s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--project-hover-shadow);
+            background: linear-gradient(135deg, var(--card-bg), var(--tech-tag-bg));
+        }
+
+        .project h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.6rem;
+            transition: all 0.5s ease;
+        }
+
+        .project p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            transition: all 0.5s ease;
+        }
+
+        .project a {
+            color: var(--secondary-accent);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .project a:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center; /* Center align tags */
+        }
+
+        .tech-stack span {
+            background: var(--tech-tag-bg);
+            color: var(--tech-tag-text);
+            padding: 0.8rem 1.6rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            user-select: none;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(2px);
+        }
+
+        .tech-stack span:hover {
+            background: var(--tech-tag-hover-bg);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        /* Contact Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        input,
+        textarea {
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            background: var(--input-bg);
+            color: var(--input-text);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            resize: vertical; /* Allow vertical resize only */
+            min-height: 50px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--input-text);
+            opacity: 0.7;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 15px var(--accent-color), inset 0 0 10px var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 0 15px var(--accent-color);
+            align-self: flex-start; /* Align button to start */
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px var(--secondary-accent);
+            background: linear-gradient(45deg, var(--secondary-accent), var(--accent-color));
+        }
+
+        /* Footer */
+        footer {
+            color: var(--footer-text);
+            font-size: 0.95rem;
+            margin-top: 2rem; /* Add some space if main is above */
+            margin-bottom: 1.5rem;
+            user-select: none;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease, background 0.3s ease;
+            box-shadow: 0 0 15px var(--accent-color);
+            z-index: 99;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-accent);
+            box-shadow: 0 0 25px var(--secondary-accent);
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            header .subtitle {
+                font-size: 1.1rem;
+            }
+            nav {
+                gap: 1rem;
+                justify-content: center;
+            }
+            nav a {
+                font-size: 1rem;
+                padding: 0.6rem 1.4rem;
+            }
+            main {
+                padding: 2.5rem 2rem;
+            }
+            section h2 {
+                font-size: 2rem;
+                padding-left: 1rem;
+            }
+            #about p {
+                font-size: 1.1rem;
+            }
+            .project {
+                padding: 1.5rem 1.8rem;
+            }
+            .project h3 {
+                font-size: 1.4rem;
+            }
+            .tech-stack span {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.9rem;
+            }
+            button[type="submit"] {
+                font-size: 1.1rem;
+                padding: 0.9rem 1.8rem;
+            }
+            .theme-toggle, #back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                top: 1rem;
+                right: 1rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            header {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            header .subtitle {
+                font-size: 1rem;
+            }
+            .avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.5rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
+            }
+            nav a {
+                width: 80%; /* Make nav items take more width */
+                text-align: center;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            section h2 {
+                font-size: 1.8rem;
+                padding-left: 0.8rem;
+                border-left-width: 6px;
+            }
+            #about p {
+                font-size: 1rem;
+            }
+            .project h3 {
+                font-size: 1.2rem;
+            }
+            .project p {
+                font-size: 0.9rem;
+            }
+            .tech-stack {
+                gap: 10px;
+            }
+            .tech-stack span {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <h1>Vikash Rawat</h1>
-    <p>DevSecOps & CyberArk Engineer | Cloud Security | CI/CD Automation</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#stack">Tech Stack</a>
-      <a href="#contact">Contact</a>
-      <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
-    </nav>
-  </header>
+    <div class="background-particles" id="particles-container"></div>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I’m a passionate DevSecOps & CyberArk engineer with over 10 years of
-        experience transitioning into cloud security and automation. I build
-        secure, scalable CI/CD pipelines with hands-on expertise in CyberArk PAM,
-        Kubernetes, Jenkins, and AWS.
-      </p>
-    </section>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun"></i> </button>
 
-    <section id="projects">
-      <h2>Featured Projects</h2>
-      <div class="project">
-        <h3>Amazon Prime Video Clone - DevSecOps Pipeline</h3>
-        <p>
-          Created an end-to-end secure CI/CD pipeline leveraging Jenkins, Docker,
-          SonarQube, Trivy, and ArgoCD. Deployed a containerized Node.js app on AWS
-          EKS with integrated monitoring via Prometheus & Grafana.
-        </p>
-        <a href="https://github.com/vikashlearns/amazon-prime-clone-devsecops" target="_blank" rel="noopener">
-          View on GitHub →
-        </a>
-      </div>
-      <div class="project">
-        <h3>CyberArk Lab Setup with Ansible</h3>
-        <p>
-          Automated CyberArk PAS lab deployment using Ansible on RHEL, including
-          Vault, PVWA, CPM, PSM, and PTA components for hands-on privileged access
-          management experience.
-        </p>
-        <a href="https://github.com/vikashlearns/cyberark-lab" target="_blank" rel="noopener">
-          View Setup Guide →
-        </a>
-      </div>
-    </section>
+    <header>
+        <div class="hero-content">
+            <div class="avatar">VR</div>
+            <h1>Vikash Rawat</h1>
+            <p class="subtitle" id="typewriter-text">DevSecOps & CyberArk Engineer | Cloud Security | CI/CD Automation</p>
+            <a href="mailto:vikash.rawat1090@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Vikash,%0D%0A%0D%0AI%20saw%20your%20portfolio%20and%20wanted%20to%20connect." class="cta-button">
+                <i class="fas fa-envelope"></i> Connect with Me
+            </a>
+        </div>
+        <nav>
+            <a href="#about"><i class="fas fa-user-circle"></i> About</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+            <a href="#stack"><i class="fas fa-code"></i> Tech Stack</a>
+            <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt"></i> Resume</a>
+        </nav>
+    </header>
 
-    <section id="stack">
-      <h2>Tech Stack</h2>
-      <div class="tech-stack">
-        <span>Jenkins</span>
-        <span>Docker</span>
-        <span>SonarQube</span>
-        <span>Trivy</span>
-        <span>Terraform</span>
-        <span>Kubernetes</span>
-        <span>ArgoCD</span>
-        <span>CyberArk</span>
-        <span>AWS EKS</span>
-        <span>Linux</span>
-        <span>Ansible</span>
-        <span>GitHub Actions</span>
-      </div>
-    </section>
+    <main>
+        <section id="about" class="animate-on-scroll">
+            <h2>About Me</h2>
+            <p>
+                I’m a passionate DevSecOps & CyberArk engineer with over 10 years of
+                experience transitioning into cloud security and automation. I build
+                secure, scalable CI/CD pipelines with hands-on expertise in CyberArk PAM,
+                Kubernetes, Jenkins, and AWS. My focus is on integrating security seamlessly
+                into the development lifecycle, ensuring robust, automated, and compliant systems.
+            </p>
+        </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form action="mailto:vikash.rawat1090@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-  </main>
+        <section id="projects" class="animate-on-scroll">
+            <h2>Featured Projects</h2>
+            <div class="project">
+                <h3>Amazon Prime Video Clone - DevSecOps Pipeline</h3>
+                <p>
+                    Architected and implemented an end-to-end secure CI/CD pipeline using Jenkins,
+                    Docker, SonarQube, Trivy, and ArgoCD. Orchestrated the deployment of a
+                    containerized Node.js application on AWS EKS with integrated monitoring
+                    via Prometheus & Grafana. This project demonstrates strong skills in
+                    DevSecOps principles, containerization, and cloud-native deployments.
+                </p>
+                <a href="https://github.com/vikashlearns/amazon-prime-clone-devsecops" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> View on GitHub →
+                </a>
+            </div>
+            <div class="project">
+                <h3>CyberArk Lab Setup with Ansible</h3>
+                <p>
+                    Automated the deployment of a comprehensive CyberArk PAS lab environment
+                    using Ansible playbooks on RHEL. This includes the installation and
+                    initial configuration of CyberArk Vault, PVWA, CPM, PSM, and PTA
+                    components, providing a robust platform for hands-on privileged access
+                    management research and development.
+                </p>
+                <a href="https://github.com/vikashlearns/cyberark-lab" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> View Setup Guide →
+                </a>
+            </div>
+            <div class="project">
+                <h3>Cloud Native Security Scanner</h3>
+                <p>
+                    Developed a lightweight security scanner for cloud-native applications
+                    integrating Checkov for IaC scanning and Trivy for container image
+                    vulnerability assessment within CI/CD workflows. Automated reporting
+                    to ensure compliance and rapid remediation of security findings.
+                </p>
+                <a href="https://github.com/vikashlearns/cloud-native-security-scanner" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> Explore the Scanner →
+                </a>
+            </div>
+        </section>
 
-  <footer>
-    &copy; 2025 Vikash Rawat. All rights reserved.
-  </footer>
+        <section id="stack" class="animate-on-scroll">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <span><i class="fab fa-jenkins"></i> Jenkins</span>
+                <span><i class="fab fa-docker"></i> Docker</span>
+                <span><i class="fas fa-shield-alt"></i> SonarQube</span>
+                <span><i class="fas fa-bug"></i> Trivy</span>
+                <span><i class="fas fa-cloud"></i> Terraform</span>
+                <span><i class="fab fa-kubernetes"></i> Kubernetes</span>
+                <span><i class="fas fa-sync-alt"></i> ArgoCD</span>
+                <span><i class="fas fa-key"></i> CyberArk</span>
+                <span><i class="fab fa-aws"></i> AWS EKS</span>
+                <span><i class="fab fa-linux"></i> Linux</span>
+                <span><i class="fas fa-robot"></i> Ansible</span>
+                <span><i class="fab fa-github"></i> GitHub Actions</span>
+                <span><i class="fas fa-sitemap"></i> GitOps</span>
+                <span><i class="fas fa-terminal"></i> Shell Scripting</span>
+                <span><i class="fas fa-project-diagram"></i> CI/CD</span>
+                <span><i class="fas fa-lock"></i> DevSecOps</span>
+            </div>
+        </section>
+
+        <section id="contact" class="animate-on-scroll">
+            <h2>Contact Me</h2>
+            <form action="mailto:vikash.rawat1090@gmail.com" method="post" enctype="text/plain" id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" />
+                <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email" />
+                <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Vikash Rawat. All rights reserved.
+    </footer>
+
+    <button id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Set initial theme based on user preference or saved setting
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light-mode' : 'dark-mode');
+        if (currentTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            icon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+                icon.classList.replace('fa-sun', 'fa-moon'); // Show moon when in light mode (to switch to dark)
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+                icon.classList.replace('fa-moon', 'fa-sun'); // Show sun when in dark mode (to switch to light)
+            }
+        });
+
+        // Typewriter Effect
+        const typewriterTextElement = document.getElementById('typewriter-text');
+        const text = typewriterTextElement.textContent;
+        typewriterTextElement.textContent = ''; // Clear original text
+        let charIndex = 0;
+        const delay = 70; // typing speed
+        const pauseAtEnd = 1500; // pause before deleting
+        const deleteSpeed = 30; // deleting speed
+        const words = [
+            "DevSecOps & CyberArk Architect",
+            "Cloud Security",
+            "CI/CD Automation",
+            "Infrastructure Automation"
+        ];
+        let wordIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = delay;
+            if (isDeleting) {
+                typeSpeed = deleteSpeed;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = pauseAtEnd;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = delay;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+        // Start the typewriter effect
+        window.onload = typeWriter;
+
+
+        // Scroll-triggered Animations (Intersection Observer)
+        const sections = document.querySelectorAll('.animate-on-scroll');
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+
+        // Back to Top Button Visibility
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Background Particles Generation
+        const particlesContainer = document.getElementById('particles-container');
+        const numberOfParticles = 30;
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 15 + 5; // Size between 5px and 20px
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 10}s`; // Randomize start time
+            particle.style.animationDuration = `${Math.random() * 15 + 10}s`; // Randomize duration
+            particlesContainer.appendChild(particle);
+        }
+
+        // Basic form validation for better UX (optional, server-side validation is crucial)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (event) => {
+                const nameInput = contactForm.querySelector('input[name="name"]');
+                const emailInput = contactForm.querySelector('input[name="email"]');
+                const messageInput = contactForm.querySelector('textarea[name="message"]');
+
+                if (!nameInput.value.trim()) {
+                    alert('Please enter your name.');
+                    event.preventDefault();
+                    nameInput.focus();
+                } else if (!emailInput.value.trim() || !/\S+@\S+\.\S+/.test(emailInput.value)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault();
+                    emailInput.focus();
+                } else if (!messageInput.value.trim()) {
+                    alert('Please enter your message.');
+                    event.preventDefault();
+                    messageInput.focus();
+                } else {
+                    // All valid, allow form submission (mailto)
+                    // For a real contact form, you'd send this to a backend API
+                    alert('Thank you for your message! I will get back to you soon.');
+                }
+            });
+        }
+
+    </script>
 </body>
 
 </html>
