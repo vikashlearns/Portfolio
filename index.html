@@ -3,130 +3,541 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vikash Rawat | DevSecOps Architect</title>
-  <meta name="description" content="Vikash Rawat's modern DevSecOps portfolio: CI/CD, Cloud, Security, and Infrastructure Automation." />
-  <meta name="author" content="Vikash Rawat" />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+  <title>Vikash Rawat | DevSecOps Engineer</title>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --accent-primary: #00d4ff;
+      --accent-secondary: #ff6b35;
+      --accent-tertiary: #4ade80;
+      --border-color: #333333;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.4);
+      --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #4ade80 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #f59e0b 100%);
+    }
+
+    body.light {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a5568;
+      --text-muted: #718096;
+      --accent-primary: #0066cc;
+      --accent-secondary: #e53e3e;
+      --accent-tertiary: #38a169;
+      --border-color: #e2e8f0;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-x: hidden;
+    }
+
+    .floating-bg {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(77, 222, 128, 0.1) 0%, transparent 40%);
+      animation: float 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(-20px, -30px) rotate(90deg); }
+      50% { transform: translate(20px, -20px) rotate(180deg); }
+      75% { transform: translate(-10px, 20px) rotate(270deg); }
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-primary);
+      color: var(--accent-primary);
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 500;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    header {
+      background: var(--bg-secondary);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: var(--shadow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .tech-tag {
+      background: var(--bg-card);
+      color: var(--accent-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--accent-primary);
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      background: var(--gradient-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+
+    .project-item {
+      background: var(--bg-secondary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent-tertiary);
+      transition: all 0.3s ease;
+    }
+
+    .project-item:hover {
+      transform: translateX(8px);
+      background: var(--bg-primary);
+    }
+
+    .project-title {
+      font-weight: 600;
+      color: var(--accent-tertiary);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-category {
+      background: var(--bg-secondary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      background: var(--bg-primary);
+      transform: scale(1.02);
+    }
+
+    .skill-category h3 {
+      color: var(--accent-secondary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list li {
+      color: var(--text-secondary);
+      padding: 0.25rem 0;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .skill-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent-primary);
+      font-weight: bold;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .link-item {
+      background: var(--bg-secondary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 2px solid transparent;
+    }
+
+    .link-item:hover {
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      transform: translateY(-4px);
+      border-color: var(--accent-primary);
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+
+    footer {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-text {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-emoji {
+      font-size: 2rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+      
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .tech-stack {
+        gap: 0.5rem;
+      }
+      
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Floating background + theme toggle -->
   <div class="floating-bg"></div>
   <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 
-  <!-- Header section -->
   <header>
     <div class="header-content">
       <div class="avatar">VR</div>
       <h1>Vikash Rawat</h1>
-      <p class="subtitle">DevSecOps Architect | CyberArk Specialist | Cloud Native Leader</p>
+      <p class="subtitle">DevSecOps Engineer | Cloud Native Enthusiast</p>
       <div class="tech-stack">
-        <span class="tech-tag">CyberArk</span>
         <span class="tech-tag">DevSecOps</span>
-        <span class="tech-tag">Kubernetes</span>
         <span class="tech-tag">Jenkins</span>
+        <span class="tech-tag">Kubernetes</span>
+        <span class="tech-tag">CyberArk</span>
         <span class="tech-tag">Terraform</span>
         <span class="tech-tag">AWS</span>
-        <span class="tech-tag">GitOps</span>
-        <span class="tech-tag">API Automation</span>
       </div>
     </div>
   </header>
 
-  <!-- Main content -->
-  <main class="container">
-    <!-- About + Projects -->
+  <div class="container">
     <div class="section-grid">
       <div class="card">
         <h2><span class="icon">👨‍💻</span>About Me</h2>
-        <p>I architect secure, scalable, and automated infrastructure. With deep expertise in CyberArk PAM, CI/CD pipelines, Kubernetes GitOps workflows, and IaC with Terraform, I help organizations shift security left and innovate faster.</p>
+        <p>I'm a passionate DevSecOps engineer specializing in automation, security, and scalable cloud-native infrastructure. Currently mastering CyberArk implementations, Jenkins pipeline optimization, and Kubernetes deployments with GitOps methodologies. I believe in building secure, efficient, and maintainable systems that empower teams to deliver value faster.</p>
       </div>
+
       <div class="card">
-        <h2><span class="icon">🚀</span>Projects</h2>
+        <h2><span class="icon">🚀</span>Featured Projects</h2>
         <div class="project-item">
-          <div class="project-title">Amazon Prime Clone - Secure CI/CD</div>
-          <p>Built with Jenkins, Trivy, SonarQube, Docker, and ArgoCD on AWS EKS using GitOps. Secrets via CyberArk. Terraform for Infra.</p>
+          <div class="project-title">Amazon Prime Clone CI/CD</div>
+          <p>End-to-end DevSecOps pipeline with Jenkins, Docker, SonarQube, Trivy security scanning, EKS deployment, and ArgoCD for GitOps.</p>
         </div>
         <div class="project-item">
-          <div class="project-title">Starbucks Clone - DevSecOps Stack</div>
-          <p>Implemented secure infrastructure and pipelines using CyberArk REST API, Terraform, Prometheus, and GitHub Actions.</p>
+          <div class="project-title">Starbucks Clone DevSecOps</div>
+          <p>Comprehensive secure pipeline implementation using Terraform IaC, Prometheus monitoring, and CyberArk secrets management.</p>
         </div>
         <div class="project-item">
-          <div class="project-title">AI Resume Optimizer</div>
-          <p>Analyzes resumes using GPT + regex + keyword matcher. Generates ATS-friendly, human-style rewrites with analytics.</p>
+          <div class="project-title">AI Resume Analyzer</div>
+          <p>Intelligent resume improvement tool leveraging GPT APIs and advanced regex parsing for GitHub profile optimization.</p>
         </div>
       </div>
     </div>
 
-    <!-- Skills -->
     <div class="card">
       <h2><span class="icon">⚡</span>Technical Skills</h2>
       <div class="skill-grid">
         <div class="skill-category">
-          <h3>Security Engineering</h3>
+          <h3>CI/CD & Automation</h3>
           <ul class="skill-list">
-            <li>CyberArk Vault, CPM, PVWA, PSM, PSMP</li>
-            <li>PAM automation (EPV Scripts, REST API)</li>
-            <li>IAM, PTA integration, SIEM (Syslog)</li>
-            <li>Endpoint Privilege Manager</li>
+            <li>Jenkins & GitHub Actions</li>
+            <li>SonarQube & Trivy</li>
+            <li>ArgoCD & GitOps</li>
+            <li>Ansible Automation</li>
           </ul>
         </div>
         <div class="skill-category">
-          <h3>DevSecOps & CI/CD</h3>
+          <h3>Cloud & Infrastructure</h3>
           <ul class="skill-list">
-            <li>Jenkins, GitHub Actions, ArgoCD</li>
-            <li>SonarQube, Trivy, Checkov</li>
-            <li>Docker, Helm, Kubernetes</li>
-            <li>Secret Injection (CyberArk, Vault)</li>
+            <li>AWS (EKS, EC2, S3)</li>
+            <li>Kubernetes & Helm</li>
+            <li>Terraform IaC</li>
+            <li>Docker Containerization</li>
           </ul>
         </div>
         <div class="skill-category">
-          <h3>Infrastructure & Cloud</h3>
+          <h3>Security & Monitoring</h3>
           <ul class="skill-list">
-            <li>AWS (EKS, EC2, ECR, S3)</li>
-            <li>Terraform IaC & Remote State Mgmt</li>
-            <li>Monitoring: Prometheus, Grafana</li>
-            <li>Ansible Provisioning, Shell Scripting</li>
+            <li>CyberArk PAM</li>
+            <li>Prometheus & Grafana</li>
+            <li>Security Scanning</li>
+            <li>REST API Integration</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- Links -->
     <div class="card">
-      <h2><span class="icon">🔗</span>Connect</h2>
+      <h2><span class="icon">🔗</span>Connect With Me</h2>
       <div class="links-grid">
         <a href="https://github.com/vikashlearns" class="link-item" target="_blank">
           <div class="link-icon">GH</div>
           <div>
             <strong>GitHub</strong>
-            <p>Public DevSecOps & Cloud Projects</p>
+            <p>Explore my projects and contributions</p>
           </div>
         </a>
         <a href="https://linkedin.com/in/vikashrawatdevops" class="link-item" target="_blank">
-          <div class="link-icon">IN</div>
+          <div class="link-icon">LN</div>
           <div>
             <strong>LinkedIn</strong>
-            <p>Professional Achievements & Posts</p>
+            <p>Professional network and updates</p>
           </div>
         </a>
         <a href="mailto:vikash@example.com" class="link-item">
           <div class="link-icon">✉️</div>
           <div>
             <strong>Email</strong>
-            <p>Let's collaborate or discuss ideas</p>
+            <p>Get in touch for collaborations</p>
           </div>
         </a>
       </div>
     </div>
-  </main>
+  </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <p class="footer-text">Crafted with ⚙️ and 💙 by Vikash Rawat</p>
-      <p class="footer-text" style="font-size: 0.9rem; color: var(--text-muted);">Secure by design. Driven by impact.</p>
+      <p class="footer-text">
+        <span class="footer-emoji">🚀</span>
+        Crafted with passion by Vikash Rawat
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Always learning, always building, always securing.
+      </p>
     </div>
   </footer>
+
+  <script>
+    // Store theme preference in memory only
+    let currentTheme = 'dark';
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      currentTheme = document.body.classList.contains('light') ? 'light' : 'dark';
+    }
+
+    // Add smooth scrolling and intersection observer for animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+    });
+  </script>
 </body>
 </html>
+
