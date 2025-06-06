@@ -1,72 +1,1604 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- NOTE: This is a preview. Updated version includes enhanced UI, ChatGPT integration support, project/resume section, and job responsibilities. -->
-<!-- Your original HTML and CSS is very comprehensive and beautifully structured. I will now update it with:
-1. ChatGPT Assistant Widget section
-2. Additional Skills section
-3. Improved Resume + Job Responsibilities section
-4. Optional Blog feed (if needed) -->
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikash Rawat | Senior CyberArk Consultant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Theme Defaults */
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121d;
+            --bg-tertiary: #1a1a2e;
+            --text-primary: #f0f0ff;
+            --text-secondary: #c0c0d0;
+            --accent-primary: #6c63ff;
+            --accent-secondary: #4d44d4;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
+            --header-height: 80px;
+            --chat-width: 320px;
+            --chat-height: 420px;
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #f8f9ff;
+            --bg-secondary: #e6e9ff;
+            --bg-tertiary: #d4d8ff;
+            --text-primary: #12121d;
+            --text-secondary: #3a3a4e;
+            --accent-primary: #4d44d4;
+            --accent-secondary: #6c63ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed) ease;
+        }
+        
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: rgba(10, 10, 18, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        [data-theme="light"] header {
+            background-color: rgba(248, 249, 255, 0.9);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--accent-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: color var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover {
+            color: var(--accent-primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-primary);
+            transition: width var(--transition-speed) ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--accent-primary);
+        }
+        
+        /* Hamburger Menu (Mobile) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            padding-top: var(--header-height);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: gradientPulse 20s infinite alternate;
+        }
+        
+        @keyframes gradientPulse {
+            0% { background-size: 100% 100%, 100% 100%; }
+            50% { background-size: 150% 150%, 150% 150%; }
+            100% { background-size: 100% 100%, 100% 100%; }
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .typewriter {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .typewriter::after {
+            content: '|';
+            position: absolute;
+            right: -8px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(108, 99, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .avatar {
+            width: 350px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 25px 50px -12px rgba(108, 99, 255, 0.25);
+            border: 2px solid rgba(108, 99, 255, 0.2);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 30px 60px -12px rgba(108, 99, 255, 0.4);
+        }
+        
+        /* Main Sections */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-skills {
+            flex: 1;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-card {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            transition: transform var(--transition-speed) ease;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.1);
+            border-color: rgba(108, 99, 255, 0.3);
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(108, 99, 255, 0.2);
+            border-color: rgba(108, 99, 255, 0.3);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background-color: rgba(108, 99, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-secondary);
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--accent-primary);
+            opacity: 0.3;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-content {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            position: relative;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 0;
+            width: 120px;
+            padding: 0.5rem;
+            background-color: var(--accent-primary);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            border-radius: var(--border-radius);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: -150px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            right: -150px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            border: 4px solid var(--bg-secondary);
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .timeline-company {
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .responsibilities {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .responsibilities li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .responsibilities li::before {
+            content: '▹';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent-primary);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: transform var(--transition-speed) ease;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.1);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-item {
+            background-color: rgba(108, 99, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-card {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform var(--transition-speed) ease;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+        }
+        
+        .contact-text h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .contact-text a:hover {
+            color: var(--accent-primary);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            transition: border-color var(--transition-speed) ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-submit:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--bg-tertiary);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-primary);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed) ease;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-5px);
+        }
+        
+        /* ChatGPT Integration */
+        .chat-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: var(--chat-width);
+            height: var(--chat-height);
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            overflow: hidden;
+        }
+        
+        .chat-container.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .chat-header {
+            background-color: var(--accent-primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            padding: 0.8rem 1rem;
+            border-radius: var(--border-radius);
+            max-width: 80%;
+        }
+        
+        .message.bot {
+            background-color: rgba(108, 99, 255, 0.1);
+            align-self: flex-start;
+        }
+        
+        .message.user {
+            background-color: var(--accent-primary);
+            color: white;
+            align-self: flex-end;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(108, 99, 255, 0.1);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        .chat-input button {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+        }
+        
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            background-color: var(--accent-secondary);
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 70px;
+                right: auto;
+                top: -20px;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                margin-left: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                padding-top: calc(var(--header-height) + 2rem);
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-container {
+                width: 90%;
+                right: 5%;
+                bottom: 5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
 
-<!-- ... [HEAD and STYLES remain same from your existing file] -->
-
-<!-- Begin body updates -->
 <body>
-  <!-- Existing canvas-container, header, hero, etc. remain same -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-shield-alt logo-icon"></i>
+            <span>VR</span>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="/resume.pdf" class="btn btn-secondary" download>
+                <i class="fas fa-download"></i> Resume
+            </a>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Vikash Rawat</h1>
+                <h2 class="hero-subtitle">
+                    <span class="typewriter" id="typewriter">Senior CyberArk Consultant</span>
+                </h2>
+                <p>Cybersecurity professional specializing in CyberArk PAM, passionate about securing privileged access and optimizing enterprise security. Proven expertise in deploying and managing CyberArk PAS, automating onboarding workflows, and driving compliance improvements.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-laptop-code"></i> View Projects
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Vikash Rawat" class="avatar">
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a <strong>Cybersecurity professional</strong> specializing in CyberArk PAM, passionate about securing privileged access and optimizing enterprise security. My expertise lies in deploying and managing CyberArk PAS, automating onboarding workflows, and driving compliance improvements.</p>
+                <p>With proven expertise in implementing security controls throughout the CI/CD pipeline, I help organizations secure their most critical assets by automating credential management and implementing least privilege access controls.</p>
+                <p>My approach combines deep technical knowledge with strategic thinking to create solutions that are not only secure but also efficient and maintainable. I am skilled at integrating with HashiCorp Vault and enhancing PAM maturity to deliver measurable operational efficiencies.</p>
+            </div>
+            
+            <div class="about-skills">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.3rem;">Core Competencies</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fas fa-lock skill-icon"></i>
+                        <span class="skill-name">CyberArk PAM</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-vault skill-icon"></i>
+                        <span class="skill-name">HashiCorp Vault</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-server skill-icon"></i>
+                        <span class="skill-name">Windows/Linux Server</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-cogs skill-icon"></i>
+                        <span class="skill-name">Automation (PowerShell)</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-file-alt skill-icon"></i>
+                        <span class="skill-name">Documentation</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-user-friends skill-icon"></i>
+                        <span class="skill-name">End-User Training</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Technical Skills</h2>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-shield-alt"></i> Privileged Access Management</h3>
+                <div class="skill-items">
+                    <span class="skill-item">CyberArk PAS</span>
+                    <span class="skill-item">HashiCorp Vault</span>
+                    <span class="skill-item">Credential Management</span>
+                    <span class="skill-item">SAML Authentication</span>
+                    <span class="skill-item">LDAP Integration</span>
+                    <span class="skill-item">Password Rotation</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
+                <div class="skill-items">
+                    <span class="skill-item">AWS Security</span>
+                    <span class="skill-item">Azure Security</span>
+                    <span class="skill-item">Kubernetes</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Minikube</span>
+                    <span class="skill-item">Infrastructure as Code</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Development & Automation</h3>
+                <div class="skill-items">
+                    <span class="skill-item">PowerShell</span>
+                    <span class="skill-item">Bash Scripting</span>
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">REST APIs</span>
+                    <span class="skill-item">Ansible</span>
+                    <span class="skill-item">Jenkins</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-network-wired"></i> Security & Compliance</h3>
+                <div class="skill-items">
+                    <span class="skill-item">PAM Implementation</span>
+                    <span class="skill-item">Compliance Frameworks</span>
+                    <span class="skill-item">Vulnerability Management</span>
+                    <span class="skill-item">Security Auditing</span>
+                    <span class="skill-item">Access Control</span>
+                    <span class="skill-item">Risk Assessment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="CyberArk Automation" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">CyberArk Automation Framework</h3>
+                    <p class="project-description">Developed a comprehensive automation framework for CyberArk PAS using REST APIs and Ansible, reducing privileged account onboarding time by 80%.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CyberArk</span>
+                        <span class="tech-tag">Ansible</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PowerShell</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="HashiCorp Vault Migration" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">HashiCorp Vault Secrets Migration</h3>
+                    <p class="project-description">Migrated over 400+ static secrets from CyberArk to HashiCorp Vault and defined Vault policies, enhancing secret management and security posture.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HashiCorp Vault</span>
+                        <span class="tech-tag">CyberArk</span>
+                        <span class="tech-tag">Secret Management</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-  <!-- ✅ Inject ChatGPT Widget Section -->
-  <section id="assistant">
-    <div class="section-header">
-      <h2 class="section-title">Ask VikashGPT</h2>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1605703995834-c71c4c9b3c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Minikube Kubectl Docker Setup" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Minikube, Kubectl, Docker Setup</h3>
+                    <p class="project-description">Automated setup script for a local Kubernetes development environment using Minikube, Kubectl, and Docker. Simplifies the installation and configuration process.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Minikube</span>
+                        <span class="tech-tag">Kubectl</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Shell Script</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://raw.githubusercontent.com/vikashlearns/minikube-kubectl-docker-setup/main/setup-k8s-docker.sh" class="project-link" target="_blank">
+                            <i class="fas fa-file-code"></i> View Script
+                        </a>
+                        <a href="https://github.com/vikashlearns/minikube-kubectl-docker-setup" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="section-header">
+            <h2 class="section-title">Professional Experience</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Feb 2021 - Present</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">CyberArk Consultant</h3>
+                    <span class="timeline-company">Vibing Techcloud Pro Pvt. Ltd. (Project: Mercedes-Benz)</span>
+                    <p class="timeline-description">Created CyberArk PAS Upgrade documentation from v11.2 to 14.0 using structured upgrade documentation. Integrated LDAP and implemented SAML authentication for seamless SSO.</p>
+                    <ul class="responsibilities">
+                        <li>Onboarded and managed over 1000+ privileged accounts across Windows, Linux, and database systems</li>
+                        <li>Automated credential rotation for improved security posture</li>
+                        <li>Migrated over 600+ privileged accounts into CyberArk via PVWA file uploads</li>
+                        <li>Created safes, policies, and CPM password rotation rules per compliance standards</li>
+                        <li>Automated onboarding of privileged accounts using a custom framework</li>
+                        <li>Conducted regular security audits and compliance checks</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Oct 2014 - Aug 2020</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Senior Technical Associate</h3>
+                    <span class="timeline-company">Dell International Services</span>
+                    <p class="timeline-description">Delivered technical support for Dell enterprise customers, maintaining a 92% first-call resolution rate and consistently exceeding SLA targets.</p>
+                    <ul class="responsibilities">
+                        <li>Liaised with engineering and development teams to resolve escalations</li>
+                        <li>Created and maintained detailed CRM records for trend analysis</li>
+                        <li>Developed technical documentation and knowledge base articles</li>
+                        <li>Mentored junior team members on technical troubleshooting</li>
+                        <li>Participated in cross-functional teams for product improvement</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Dec 2013 - May 2014</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Technical Associate</h3>
+                    <span class="timeline-company">WIPRO</span>
+                    <p class="timeline-description">Provided front-line support to Airtel customers, resolving account, connectivity, and service issues with 98% customer satisfaction.</p>
+                    <ul class="responsibilities">
+                        <li>Managed customer inquiries through multiple channels</li>
+                        <li>Documented and tracked issues in CRM system</li>
+                        <li>Collaborated with technical teams for complex issue resolution</li>
+                        <li>Identified opportunities for process improvement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>+91 8800518790</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:vikash.rawat1090@gmail.com">vikash.rawat1090@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/vikash-rawat-625b8466" target="_blank">linkedin.com/in/vikash-rawat-625b8466</a>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-github contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/vikashlearns" target="_blank">github.com/vikashlearns</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Send me a message!</h3>
+                <form action="https://formspree.io/f/your_form_id" method="POST"> 
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="footer-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Vikash Rawat</span>
+            </a>
+            <div class="footer-links">
+                <a href="#about" class="footer-link">About</a>
+                <a href="#skills" class="footer-link">Skills</a>
+                <a href="#projects" class="footer-link">Projects</a>
+                <a href="#experience" class="footer-link">Experience</a>
+                <a href="#contact" class="footer-link">Contact</a>
+                <a href="/resume.pdf" class="footer-link" download>Resume</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/vikash-rawat-625b8466" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/vikashlearns" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">&copy; <span id="currentYear"></span> Vikash Rawat. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- ChatGPT Integration -->
+    <div class="chat-button" id="chatButton">
+        <i class="fas fa-comment"></i>
     </div>
-    <div style="max-width: 600px; margin: 0 auto; text-align: center">
-      <iframe 
-        src="https://chat.openai.com/chat/embed?model=gpt-4&prompt=Ask%20me%20anything%20about%20DevOps,%20CyberArk,%20or%20my%20projects" 
-        style="width:100%; height: 600px; border: none; border-radius: 10px;"
-        title="VikashGPT Assistant">
-      </iframe>
-      <p style="color: var(--text-secondary); margin-top: 1rem">Use this to ask questions about my experience, projects, or skills.</p>
+    
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <i class="fas fa-robot"></i>
+                <span>Ask Me Anything</span>
+            </div>
+            <button class="close-chat" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                Hi! I'm Vikash's AI assistant. Ask me about CyberArk, security, or Vikash's experience!
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
     </div>
-  </section>
 
-  <!-- ✅ Improve Skills Section with Additional Tools -->
-  <section id="skills">
-    <div class="section-header">
-      <h2 class="section-title">Skills & Tools</h2>
-    </div>
-    <div class="skills-grid">
-      <!-- Existing skills + these below -->
-      <div class="skill-card"><i class="fas fa-cloud skill-icon"></i><span class="skill-name">AWS (EC2, EKS, IAM)</span></div>
-      <div class="skill-card"><i class="fas fa-tools skill-icon"></i><span class="skill-name">Terraform & Helm</span></div>
-      <div class="skill-card"><i class="fas fa-code skill-icon"></i><span class="skill-name">CI/CD: Jenkins, GitHub Actions</span></div>
-      <div class="skill-card"><i class="fas fa-network-wired skill-icon"></i><span class="skill-name">Networking & Security</span></div>
-      <div class="skill-card"><i class="fas fa-shield-alt skill-icon"></i><span class="skill-name">DevSecOps: Trivy, SonarQube</span></div>
-      <div class="skill-card"><i class="fas fa-robot skill-icon"></i><span class="skill-name">Python, Shell, PowerShell</span></div>
-    </div>
-  </section>
-
-  <!-- ✅ Add Resume Highlights + Responsibilities -->
-  <section id="resume">
-    <div class="section-header">
-      <h2 class="section-title">Resume Snapshot</h2>
-      <a href="/resume.pdf" class="btn btn-secondary" download>
-        <i class="fas fa-download"></i> Download Full Resume
-      </a>
-    </div>
-    <div class="about-text">
-      <ul>
-        <li><strong>CyberArk Implementation:</strong> Installed and upgraded from v11.2 to 14.0 for enterprise clients.</li>
-        <li><strong>DevSecOps Pipelines:</strong> Built CI/CD pipelines integrating Jenkins, SonarQube, Trivy, and ArgoCD.</li>
-        <li><strong>Secrets Management:</strong> Migrated 400+ static secrets from CyberArk to HashiCorp Vault.</li>
-        <li><strong>Automation:</strong> Used Ansible, PowerShell, and REST APIs to automate onboarding and credential rotation.</li>
-        <li><strong>Monitoring:</strong> Integrated Prometheus and Grafana for environment health and alerting.</li>
-        <li><strong>Training & Documentation:</strong> Conducted internal trainings and built upgrade/runbooks.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 🔄 Optionally include Blog/Updates section in future -->
-  <!-- More sections can be modularly added below -->
-
-  <!-- ✅ All existing footer, contact, scripts, canvas etc. stay intact -->
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+        
+        // Typewriter effect
+        const typewriterElement = document.getElementById('typewriter');
+        const phrases = ["Senior CyberArk Consultant", "Cybersecurity Professional", "PAM Specialist", "Automation Enthusiast"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+            
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        document.addEventListener('DOMContentLoaded', typeWriter);
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // ChatGPT integration
+        const chatButton = document.getElementById('chatButton');
+        const chatContainer = document.getElementById('chatContainer');
+        const closeChat = document.getElementById('closeChat');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageButton = document.getElementById('sendMessage');
+        
+        chatButton.addEventListener('click', () => {
+            chatContainer.classList.toggle('active');
+        });
+        
+        closeChat.addEventListener('click', () => {
+            chatContainer.classList.remove('active');
+        });
+        
+        // Sample responses for the chatbot
+        const responses = {
+            "hello": "Hello! How can I help you today?",
+            "hi": "Hi there! What would you like to know?",
+            "cyberark": "CyberArk is a leader in Privileged Access Management (PAM) solutions. Vikash has extensive experience in implementing and managing CyberArk solutions for enterprise clients.",
+            "experience": "Vikash has over 8 years of experience in IT security, specializing in CyberArk implementations. He has worked with major clients including Mercedes-Benz.",
+            "projects": "Vikash has worked on several key projects including CyberArk automation frameworks, HashiCorp Vault migrations, and Kubernetes setup automation.",
+            "contact": "You can reach Vikash at vikash.rawat1090@gmail.com or +91 8800518790",
+            "resume": "You can download Vikash's resume from the link in the navigation bar or footer.",
+            "skills": "Vikash specializes in CyberArk, HashiCorp Vault, PowerShell automation, and security implementations.",
+            "default": "I'm Vikash's AI assistant. You can ask me about his experience, skills, projects, or contact information."
+        };
+        
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user' : 'bot');
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function processMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            let response = responses.default;
+            
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                response = responses.hello;
+            } else if (lowerMessage.includes('cyberark')) {
+                response = responses.cyberark;
+            } else if (lowerMessage.includes('experience')) {
+                response = responses.experience;
+            } else if (lowerMessage.includes('project')) {
+                response = responses.projects;
+            } else if (lowerMessage.includes('contact')) {
+                response = responses.contact;
+            } else if (lowerMessage.includes('resume')) {
+                response = responses.resume;
+            } else if (lowerMessage.includes('skill')) {
+                response = responses.skills;
+            }
+            
+            // Simulate typing delay
+            setTimeout(() => {
+                addMessage(response);
+            }, 500);
+        }
+        
+        sendMessageButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                processMessage(message);
+            }
+        });
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessageButton.click();
+            }
+        });
+        
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navUl = document.querySelector('header nav ul');
+        
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
